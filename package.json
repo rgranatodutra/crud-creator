@@ -1,6 +1,6 @@
 {
   "name": "@infotecrs/crud-creator",
-  "version": "1.0.0",
+  "version": "1.0.2",
   "description": "instantly create crud for tables",
   "main": "index.js",
   "scripts": {

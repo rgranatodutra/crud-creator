@@ -11,6 +11,7 @@
   "include": [
     "./*.ts",
     "src/**/*",
+    "index.js",
   ],
   "exclude": [
     "type.ts"
