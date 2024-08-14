@@ -1,39 +1,8 @@
 import { ResultSetHeader } from "mysql2";
-import createWhereString, { FilterWithPaginationQueryParameters } from "./utils/create-where-string";
 import toPaginated, { PaginatedResponse } from "./utils/to-paginated";
 import { NotFoundError } from "@rgranatodutra/http-errors";
-
-export abstract class InstancesMannager {
-    public abstract executeQuery<T>(clientName: string, query: string, parameters: Array<any>): Promise<{ result: T }>;
-}
-
-type ConditionOperator = ">" | "<" | ">=" | "<=" | "<>" | "=";
-
-export interface Join<T1, T2> {
-    alias: string;
-    tableName: string;
-    type: "LEFT" | "RIGHT" | "INNER" | "OUTER";
-    condition: {
-        key1: keyof T1 & string;
-        operator: ConditionOperator;
-        key2: keyof T2 & string;
-    }
-    columns?: (keyof T2)[];
-}
-interface CrudProps<T> {
-    tableName: string;
-    primaryKey: keyof T & string;
-    likeColumns?: Array<keyof T>;
-    dateColumns?: Array<keyof T>;
-    numberColumns?: Array<keyof T>;
-    service: InstancesMannager;
-    columns?: (keyof T)[];
-}
-
-interface CrudWithJoinProps<T> extends CrudProps<T> {
-    alias: string;
-    joins: Join<T, any>[];
-}
+import { CrudProps, CrudWithJoinProps, FilterWithPaginationQueryParameters, InstancesMannager, Join } from "./types";
+import createWhereString from "./utils/create-where-string";
 
 class Crud<T> {
     private readonly tableName: string;

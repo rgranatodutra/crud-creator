@@ -3,13 +3,9 @@ var __importDefault = (this && this.__importDefault) || function (mod) {
     return (mod && mod.__esModule) ? mod : { "default": mod };
 };
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.InstancesMannager = void 0;
-const create_where_string_1 = __importDefault(require("./utils/create-where-string"));
 const to_paginated_1 = __importDefault(require("./utils/to-paginated"));
 const http_errors_1 = require("@rgranatodutra/http-errors");
-class InstancesMannager {
-}
-exports.InstancesMannager = InstancesMannager;
+const create_where_string_1 = __importDefault(require("./utils/create-where-string"));
 class Crud {
     tableName;
     primaryKey;
